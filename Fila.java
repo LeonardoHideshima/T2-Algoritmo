@@ -23,9 +23,9 @@ public class Fila {
         return ocupacao;
     }
 
-    public Documento remove(){
+    public Documento remove() throws FilaVaziaException{
         if (this.vazia()){
-            throw new RuntimeException("fila vazia. Impossível remover");
+            throw new FilaVaziaException("remover");
         }
         Documento resultado= inicio.getInfo();
         resultado.imprime();
@@ -34,9 +34,9 @@ public class Fila {
         return resultado;
     }
 
-    public void insere(Documento info){
+    public void insere(Documento info) throws FilaCheiaException{
         if (this.cheia()){
-            throw new RuntimeException("fila cheia. Impossível inserir");
+            throw new FilaCheiaException("inserir");
         }
         No novo=new No(info);
         if (this.vazia()){
